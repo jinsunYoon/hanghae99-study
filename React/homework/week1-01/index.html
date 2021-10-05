@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>오늘의 투두</title>
+  </head>
+  <body>
+    <style>
+        .title {
+            margin: 20px;
+        }
+
+        .main {
+            display: flex;
+            align-items: center;
+            margin: 20px;
+        }
+        .todoCard {
+            border: 1px solid gray;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-right: 20px;
+            width: 200px;
+            max-width: 200px;
+        }
+        button {
+            width: 100px;
+        }
+
+        button:hover {
+            background-color: orange;
+        }
+    </style>
+
+        <h1 class="title">오늘 할 일</h1>
+        <div class="main">
+        <div class="cardList">
+            
+        </div>
+
+        <div class="add">
+            <input id="addInput" />
+            <button onClick="addCard()">추가하기</button>
+        </div>
+        </div>
+
+        <script>
+
+        // 완료하기 함수
+        // button에 추가해줄 거예요!
+        function completeTodo(event) {
+            // 어떤 버튼을 눌렀는 지 타겟을 가져와요.
+            console.log(event.target);
+            // 부모(투두 카드겠죠!)를 찾아봅니다.
+            console.log(event.target.parentElement);
+            // 배경색을 바꿔줍시다.
+            e.target.parentElement.style.backgroundColor = "green";
+        }
+
+        // 투두 카드를 추가하는 함수
+        function addCard() {
+            // 투두를 감싸는 div 만들고 클래스 이름을 줍니다.
+            const newTodo = document.createElement("div");
+            newTodo.className = "todoCard";
+
+            // 투두 안에 들어갈 타이틀과 버튼을 만들어요.
+            const title = document.createElement("h3");
+            title.textContent = document.getElementById("addInput").value;
+            const button = document.createElement("button");
+            button.textContent = "완료";
+
+            // 만든 버튼에 완료하기 함수를 연결해줘요.
+            button.addEventListener("click", completeTodo);
+            // 타이틀과 버튼을 투두에 추가해주고,
+            newTodo.appendChild(title);
+            newTodo.appendChild(button);
+
+            // 목록에 투두를 추가해줘요.
+            document.getElementsByClassName("cardList")[0].appendChild(newTodo);
+        }
+    </script>
+  </body>
+</html>
